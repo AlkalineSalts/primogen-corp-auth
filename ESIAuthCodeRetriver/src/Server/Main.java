@@ -18,7 +18,15 @@ public class Main {
 		HttpHandler stopServer = (HttpExchange exchange) -> {
 			Map<String, String> map = getQueryString(exchange.getRequestURI().getQuery());
 			String codeStr = map.get("code");
-			String html = String.format("<html><body><p>Hello! Your authorization code is: %s</p></body></html>", codeStr);
+			String answer;
+			if (codeStr == null) {
+				answer = "Unfortunately, an error occured.";
+			}
+			else {
+				answer = String.format("Your authorization code is: %s", codeStr);
+			}
+			System.out.println(answer);
+			String html = String.format("<html><body><p>Hello! %s</p></body></html>", answer);
 			byte[] byteHtml = html.getBytes();
 			exchange.sendResponseHeaders(200, byteHtml.length);
 			OutputStream os = exchange.getResponseBody();
