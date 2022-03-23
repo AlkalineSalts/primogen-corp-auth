@@ -25,7 +25,6 @@ public class Main {
 			else {
 				answer = String.format("Your authorization code is: %s", codeStr);
 			}
-			System.out.println(answer);
 			String html = String.format("<html><body><p>Hello! %s</p></body></html>", answer);
 			byte[] byteHtml = html.getBytes();
 			exchange.sendResponseHeaders(200, byteHtml.length);
