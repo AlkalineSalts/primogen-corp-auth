@@ -10,6 +10,7 @@ public class Main {
 		InetSocketAddress isa = new InetSocketAddress(InetAddress.getLocalHost(), 8865);
 		HttpServer http = HttpServer.create(isa, 2);
 		http.start();
+		http.stop(0);
 		
 	}
 	public static void main(String[] args) throws UnknownHostException, IOException {
